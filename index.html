@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  background: #999;
+  text-align: center;
+  color:#ececec;
+  font-weight: bold;
+}
+
+#canvas {
+  background: #555;
+  border: 10px solid #555;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top:30px;
+}
+#miniatures{
+  margin-top: 30px;
+}
+.miniature{
+  cursor:pointer;
+  margin:10px;
+  border-bottom: 5px solid transparent;
+}
+
+.selected{
+  border-bottom: 5px solid green;
+}
+
+</style>
+<body>
+<div id="controls">
+  Algorithm
+  <select id="algorithm-combo">
+    <option value="0">Breadth First Search (BFS, non-optimal)</option>
+    <option value="1">Bellman Ford</option>
+    <option value="2">Dijkstra</option>
+    <option value="3">A*</option>
+    <option value="4">IDA*</option>
+  </select>
+
+  Delay<input id="delay" type="text" value="100"/>
+  <input id="start-button" type="button" value="Start"/>
+
+</div>
+<div id="miniatures">
+
+</div>
+<div id="canvas">
+
+</div>
+<!-- JQuery -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- D3.js -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- App code -->
+<script type="text/javascript" src="./visualizer.js"></script>
+
+</body>
+</html>
