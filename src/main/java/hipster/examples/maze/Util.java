@@ -17,6 +17,7 @@ import java.util.Map;
 public class Util {
 
     public static Gson gson = new Gson();
+    
     public static String[][] mazes = new String[][]{
         Mazes.exampleMaze1,
         Mazes.testMaze1,
@@ -45,4 +46,15 @@ public class Util {
                 return Mazes.exampleMaze1;
         }
     }
+    
+    public static String[] algorithms = new String[]{
+        "Breadth First Search (BFS, non-optimal) ",
+        "Bellman Ford",
+        "Dijkstra",
+        "A*",
+        "IDA*"
+       
+    };
 }
+
+

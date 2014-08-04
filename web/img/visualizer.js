@@ -1,10 +1,11 @@
 /*
  * Maze visualizer code
  */
- 
+
 var miniatures = [];
 var selectedMaze = 0;
 var size = 20;
+var miniatureWidth = 250;
 var ws;
 var svg;
 
@@ -67,7 +68,10 @@ function drawMiniatures(mazes){
   for(var i=0; i< mazes.length;i++){
     var m = mazes[i];
     var mSvg = d3.select("#miniatures").append("span").attr("class","miniature").attr("mazeIdx",i).append("svg");
-    drawMaze(m,mSvg,6);
+
+    var cellSize = miniatureWidth / m[0].length;
+
+    drawMaze(m,mSvg,cellSize);
   }
 
   $(".miniature").each(function(index,el){
