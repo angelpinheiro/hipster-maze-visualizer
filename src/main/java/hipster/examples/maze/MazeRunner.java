@@ -44,11 +44,11 @@ public class MazeRunner {
     Session socket;
     AlgorithmListener listener;
 
-    public void run(Message msg , Session session) {
+    public void run(Commands.StartCommand msg , Session session) {
 
         this.socket = session;
 
-        Maze2D maze = new Maze2D(Util.getMaze(msg.maze));
+        Maze2D maze = new Maze2D(Util.getMaze(msg.selectedMaze));
         Iterator<? extends Node<?, Point, ?>> iterator = createAlgorithm(maze, msg.algorithm);
         listener = new AlgorithmListener(iterator, maze, session, msg.delay);
         listener.startTimer();
@@ -58,7 +58,7 @@ public class MazeRunner {
     protected void updateMaze(String mazeString) {
         if (socket.isOpen()) {
             try {
-                socket.getRemote().sendString(Util.gson.toJson(new Message("update", mazeString)));
+                socket.getRemote().sendString(Util.gson.toJson(new Commands.UpdateCommand(mazeString)));
                 socket.getRemote().flush();
             } catch (IOException ex) {
                 Logger.getLogger(MazeRunner.class.getName()).log(Level.SEVERE, null, ex);
@@ -103,8 +103,7 @@ public class MazeRunner {
                 }
             });
 
-            updateMaze(getMazeStringSolution(maze, explored, statePath));
-                
+            updateMaze(getMazeStringSolution(maze, explored, statePath));            
             if (currentNode.state().equals(maze.getGoalLoc())) {
                 stopTimer();
             }

@@ -31,13 +31,13 @@ public class Server {
     public static void main(String[] args) {
         org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server();
         ServerConnector connector = new ServerConnector(server);
-        connector.setPort(8081);
+        connector.setPort(8080);
         server.addConnector(connector);
 
         // Setup the basic application "context" for this application at "/"
         // This is also known as the handler tree (in jetty speak)
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.setContextPath("/");
+        context.setContextPath("/web");
         //server.setHandler(context);
         
         

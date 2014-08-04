@@ -23,31 +23,44 @@ public class WebSocketServer extends WebSocketAdapter {
     @Override
     public void onWebSocketText(String message) {
         super.onWebSocketText(message);
-        handleMessage(Util.gson.fromJson(message, Message.class));
+        handleMessage(message);
     }
 
     @Override
     public void onWebSocketClose(int statusCode, String reason) {
         super.onWebSocketClose(statusCode, reason); //To change body of generated methods, choose Tools | Templates.
         MazeRunner r = runners.get(getSession());
-        
-        if(r!=null){
+
+        if (r != null) {
             r.stop();
         }
     }
 
-    private void handleMessage(Message m) {
-        switch (m.code) {
-            case Message.START:
-                onStart(m);
-                break;
-            case "GET_MAZES":
+    private void handleMessage(String message) {
 
-                Message mes = new Message("mazes");
-                mes.mazes = Util.mazes;
-                String mazes = Util.gson.toJson(mes).toString();
+        Commands.BaseCommand cmd = Util.gson.fromJson(message, Commands.BaseCommand.class);
+
+        switch (cmd.code) {
+            case Commands.START:
+                Commands.StartCommand start = Util.gson.fromJson(message, Commands.StartCommand.class);
+                onStart(start);
+                break;
+
+            case Commands.STOP:
+                MazeRunner runner = runners.get(getSession());
+                if (runner != null) {
+                    runner.stop();
+                }
+                break;
+
+            case Commands.GET_CONFIG:
+
+                Commands.ConfigCommand cfg = new Commands.ConfigCommand();
+
+                cfg.mazes = Util.mazes;
+                cfg.algorithms = Util.algorithms;
                 try {
-                    getSession().getRemote().sendString(mazes);
+                    getSession().getRemote().sendString(Util.gson.toJson(cfg));
                 } catch (IOException ex) {
                     Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -55,7 +68,7 @@ public class WebSocketServer extends WebSocketAdapter {
         }
     }
 
-    private void onStart(Message m) {
+    private void onStart(Commands.StartCommand m) {
 
         MazeRunner runner = runners.get(getSession());
 
