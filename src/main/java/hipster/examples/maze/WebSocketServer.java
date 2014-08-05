@@ -14,7 +14,7 @@ import org.eclipse.jetty.websocket.api.WebSocketAdapter;
 
 /**
  *
- * @author joseangel.pineiro
+ * @author angelpinheiro
  */
 public class WebSocketServer extends WebSocketAdapter {
 

@@ -6,7 +6,7 @@ package hipster.examples.maze;
 
 /**
  *
- * @author joseangel.pineiro
+ * @author angelpinheiro
  */
 public class Commands {
     

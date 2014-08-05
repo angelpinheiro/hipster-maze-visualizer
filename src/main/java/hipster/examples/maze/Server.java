@@ -14,8 +14,10 @@ import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 
 /**
- *
- * @author joseangel.pineiro
+ * Code from Jetty WebSocket Examples:
+ * https://github.com/jetty-project/embedded-jetty-websocket-examples
+ * 
+ * @author angelpinheiro
  */
 public class Server {
 
@@ -55,7 +57,7 @@ public class Server {
         handlers.setHandlers(new Handler[]{ resource_handler, context });
         server.setHandler(handlers);
 
-        // Add a websocket to a specific path spec
+        // Add the websocket to a specific path spec
         ServletHolder holderEvents = new ServletHolder("ws-events", EventServlet.class);
         context.addServlet(holderEvents, "/mazews/*");
 
