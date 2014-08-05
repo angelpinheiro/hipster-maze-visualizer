@@ -17,7 +17,6 @@ import es.usc.citius.hipster.model.impl.WeightedNode;
 import es.usc.citius.hipster.model.problem.ProblemBuilder;
 import es.usc.citius.hipster.model.problem.SearchProblem;
 import es.usc.citius.hipster.util.examples.maze.Maze2D;
-import es.usc.citius.hipster.util.examples.maze.Mazes;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +36,7 @@ import org.eclipse.jetty.websocket.api.Session;
 
 /**
  *
- * @author joseangel.pineiro
+ * @author angelpinheiro
  */
 public class MazeRunner {
 

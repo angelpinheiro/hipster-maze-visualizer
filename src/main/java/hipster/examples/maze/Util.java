@@ -6,13 +6,10 @@ package hipster.examples.maze;
 
 import com.google.gson.Gson;
 import es.usc.citius.hipster.util.examples.maze.Mazes;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
- * @author joseangel.pineiro
+ * @author angelpinheiro
  */
 public class Util {
 
