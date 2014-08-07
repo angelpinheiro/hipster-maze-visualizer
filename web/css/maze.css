@@ -1,0 +1,73 @@
+body{
+  background: #ebebeb;
+}
+
+.miniature{
+  margin: auto;
+  vertical-align: middle;
+}
+
+.miniature-container{
+  display: table;
+  width:190px;
+  margin:2px;
+  text-align:center;
+  height:150px;
+  vertical-align: middle;
+}
+
+
+#canvas{
+  margin: 30px;
+}
+
+.maze-row{
+  margin:0;
+  padding:0;
+  font-size: 0;
+}
+
+.maze > .maze-row span{
+  margin:1px;
+  padding:0;
+  display: inline-block;
+  background:red;
+  font-size:10px;
+  color: #555;
+  border-radius:30%;
+  -webkit-box-shadow:inset 1px 1px 1px 1px #AEAEAE;
+  box-shadow: 1px 1px 1px 1px #ABABAB;
+  -webkit-transform-style: preserve-3d;
+
+}
+
+#miniatures-section  span{
+  margin:0px !important;
+  border-radius:10%;
+  -webkit-box-shadow:inset 1px 1px 1px 1px #AEAEAE;
+  box-shadow: 1px 1px 1px 1px #ABABAB;
+}
+
+.maze-row span i{
+  float:left;
+}
+
+span.cell_path{
+  border-radius:50%;
+  -webkit-box-shadow: 2px 2px 2px 2px #9A9A9A;
+  box-shadow: 2px 2px 2px 2px #ABABAB;
+}
+
+span.cell_wall{
+  -webkit-box-shadow: 1px 1px 1px 1px #333;
+  box-shadow: 1px 1px 1px 1px #444;
+}
+
+
+.selectpicker{
+  width:300px;
+}
+
+#miniatures-section{
+  margin-top:50px;
+}

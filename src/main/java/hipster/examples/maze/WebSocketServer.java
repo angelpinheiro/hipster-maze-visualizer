@@ -40,6 +40,8 @@ public class WebSocketServer extends WebSocketAdapter {
 
         Commands.BaseCommand cmd = Util.gson.fromJson(message, Commands.BaseCommand.class);
 
+        System.out.println("COMMAND: " + cmd.code);
+
         switch (cmd.code) {
             case Commands.START:
                 Commands.StartCommand start = Util.gson.fromJson(message, Commands.StartCommand.class);
@@ -59,6 +61,11 @@ public class WebSocketServer extends WebSocketAdapter {
 
                 cfg.mazes = Util.mazes;
                 cfg.algorithms = Util.algorithms;
+
+                System.out.println(Util.gson.toJson(cfg));
+
+
+
                 try {
                     getSession().getRemote().sendString(Util.gson.toJson(cfg));
                 } catch (IOException ex) {
