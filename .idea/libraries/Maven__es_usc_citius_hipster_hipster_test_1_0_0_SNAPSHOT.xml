@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: es.usc.citius.hipster:hipster-test:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/es/usc/citius/hipster/hipster-test/1.0.0-SNAPSHOT/hipster-test-1.0.0-20140806.105538-19.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/es/usc/citius/hipster/hipster-test/1.0.0-SNAPSHOT/hipster-test-1.0.0-20140806.105538-19-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/es/usc/citius/hipster/hipster-test/1.0.0-SNAPSHOT/hipster-test-1.0.0-20140806.105538-19-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
