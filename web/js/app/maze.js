@@ -1,9 +1,11 @@
 /**
  * Maze model
  */
-function Maze(mazeString){
+function Maze(mazeString, miniature){
 
   var listener = null;
+
+  var miniature = miniature==true?true:false;
 
   function initialize(mazeArray){
     var map = new Array(mazeArray.length);
@@ -25,6 +27,10 @@ function Maze(mazeString){
 
   return{
 
+    isMiniature: function(){
+      return miniature;
+    },
+
     getInitialState: function(){
         return initialState;
     },
@@ -35,6 +41,27 @@ function Maze(mazeString){
 
     getAt: function(x,y){
       return currentState[x][y];
+    },
+
+    isNextToPath: function(x,y){
+
+      var xFrom = Math.max(0,x-1);
+      var xTo = Math.min(size.x,x+1);
+
+      var yFrom = Math.max(0,y-1);
+      var yTo = Math.min(size.y,y+1);
+
+      for(var i = xFrom; i< xTo;i++){
+        console.log("x",i)
+        for(var j = yFrom; j < yTo;j++){
+          if(initialState[j][i]==cellTypes.empty){
+            return true;
+          }
+        }
+      }
+
+      return false;
+
     },
 
     getPath: function(){

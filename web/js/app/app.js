@@ -9,20 +9,6 @@ var mazeView;
 var miniatureWidth = 250;
 
 var selectedMaze = window.location.hash.replace("#","") || 2;
-/*
-var maze = new Maze(mazeStr);
-var mazeView = new MazeView(maze,"#canvas", cellSize);
-
-// view vill repaint ou update maze
-maze.setListener(mazeView);
-*/
-
-// update path forever!
-setTimeout(function(){
-  setInterval(function(){
-    //maze.updatePath(randomPath(10,maze));
-  },50); // 5ms works great
-},2000);
 
 var socketCfg = {
 
@@ -78,23 +64,8 @@ var socketCfg = {
 
 };
 
-/*
-setTimeout(function(){
-  ws.socket().send(JSON.stringify(
-      {
-        code:Commands.START,
-        selectedMaze: selectedMaze,
-        algorithm: 3,
-        delay: 100
-      }));
-},1000);
-*/
-
-
 // on document ready, init websocket
 $(document).ready(function() {
-
-
 
   var ws = new WebsocketMgr(socketCfg);
 

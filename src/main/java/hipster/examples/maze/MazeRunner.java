@@ -78,7 +78,6 @@ public class MazeRunner {
         private Maze2D maze;
         private Timer timer;
         Session socket;
-        Gson gson = new Gson();
 
         private AlgorithmListener(Iterator<? extends Node<?, Point, ?>> algorithmIterator, Maze2D maze, Session socket, int delay) {
             this.algorithmIterator = algorithmIterator;

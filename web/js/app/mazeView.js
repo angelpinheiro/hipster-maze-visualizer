@@ -56,13 +56,27 @@ function MazeView(maze, el, cellSize){
     }else if(c==cellTypes.start){
       return "cell_start";
     }else if(c==cellTypes.goal){
-      return "cell_goal";
+      return "cell_goal scaleeforever";
     }else if(c==cellTypes.path){
-      return "cell_path";
+      return "cell_path rotateforever";
     }else if(c==cellTypes.visited){
       return "cell_visited";
     }else{
       return "cell_wall";
+    }
+  }
+
+  var squareCOlorRamp = d3.scale.linear().domain([0,maze.size().x+maze.size().y]).range(["cyan","yellow"]);
+  function getCellHtml(c,i,j){
+
+    if(c==cellTypes.start){
+      return "<i class='fa fa-map-marker'></i>";
+    }else if(c==cellTypes.goal){
+      return "<i class='fa fa-flag-checkered'></i>";
+    }else if(c==cellTypes.wall && (i+j)%(parseInt(Math.random()*40))==0){
+      return "<i class='fa fa-square' style='color:"+squareCOlorRamp(i+j)+"'></i>"
+    }else{
+      return (i+j)%(parseInt(Math.random()*30))==0?"<i class='fa fa-tree'></i>":"";
     }
   }
 
@@ -81,10 +95,15 @@ function MazeView(maze, el, cellSize){
 
   var rows;
   var cells;
+  var firstTime = true;
 
   function buildMap(){
 
-    clean();
+    if(firstTime){
+      clean();
+      firstTime=false;
+    }
+
 
     rows = _container.selectAll("." + drawCfg.row.cls)
         .data(maze.getInitialState())
@@ -102,8 +121,8 @@ function MazeView(maze, el, cellSize){
         .attr("style", function(d,i,j){
           return "width:"+cellSize+"px;height:"+cellSize+"px;background:"+getCellColor(d,i,j)+";"
         })
-        .attr("class", function(d,i,j){return getCellClass(d,i,j);});
-        //.html(function(d,i,j){return "<i>"+d+"</i>";});
+        .attr("class", function(d,i,j){return getCellClass(d,i,j);})
+        .html(function(d,i,j){return getCellHtml(d,i,j);});
   };
 
   function clean(){
@@ -165,6 +184,7 @@ function MazeView(maze, el, cellSize){
         var p = previousIds[i];
         d3.select(el).selectAll(p)
           .data(["."])
+          .html("")
           .style("background", COLORS.cell_visited)
           .style("border-radius", "50%")
           .attr("class", "cell_visited")
@@ -177,10 +197,12 @@ function MazeView(maze, el, cellSize){
         var p = pathIds[i];
         d3.select(el).select(p)
           .data(["*"])
-          .attr("class", "cell_path")
+          .attr("class", "cell_path rotateforever")
+          .html('<i class="fa icon-2x fa-paw" style=" vertical-align: middle;"></i>')
           .style("background", colorRamp(i))
           //.style("border-radius", radiusRamp(i)+"%")
-          .style("-webkit-transition", "0.2s")
+          //.style("-webkit-transition", "0.1s")
+
       }
     }
   }
