@@ -93,32 +93,34 @@ span.cell_wall{
 }
 
 
-
+/********/
 .rotateforever {
     -webkit-animation: rotation 5s infinite linear;
+    animation: rotation 5s infinite linear;
 }
 
 @-webkit-keyframes rotation {
     from {-webkit-transform: rotate(0deg);}
     to   {-webkit-transform: rotate(359deg);}
 }
-
-
-.translatetree {
-    -webkit-animation: translateT 2s infinite linear;
+@keyframes rotation {
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
 }
 
-@-webkit-keyframes translateT {
-    from {-webkit-transform: translate(-10,0);}
-    to   {-webkit-transform: translate(10),1em;}
-}
-
-
+/********/
 .scaleeforever {
     -webkit-animation: scaleF 1s infinite linear;
+    animation: scaleF 1s infinite linear;
 }
 
 @-webkit-keyframes scaleF {
     from {-webkit-transform: scale(1.2);}
     to   {-webkit-transform: scale(0.8);}
+}
+
+
+@keyframes scaleF {
+    from {transform: scale(1.2);}
+    to   {transform: scale(0.8);}
 }
