@@ -96,7 +96,7 @@ span.cell_wall{
 /********/
 .rotateforever {
     -webkit-animation: rotation 5s infinite linear;
-    animation: rotation 5s infinite linear;
+    /* animation: rotation 5s infinite linear; <--- too slow */
 }
 
 @-webkit-keyframes rotation {
