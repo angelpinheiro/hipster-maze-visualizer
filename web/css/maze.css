@@ -111,7 +111,7 @@ span.cell_wall{
 /********/
 .scaleeforever {
     -webkit-animation: scaleF 1s infinite linear;
-    animation: scaleF 1s infinite linear;
+    /* animation: scaleF 1s infinite linear; <--- too slow */
 }
 
 @-webkit-keyframes scaleF {
