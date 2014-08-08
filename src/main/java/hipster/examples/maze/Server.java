@@ -49,7 +49,7 @@ public class Server {
         // Configure the ResourceHandler. Setting the resource base indicates where the files should be served out of.
         // In this example it is the current directory but it can be configured to anything that the jvm has access to.
         resource_handler.setDirectoriesListed(true);
-        resource_handler.setWelcomeFiles(new String[]{ "web/index.html" });
+        resource_handler.setWelcomeFiles(new String[]{ "index.html" });
         resource_handler.setResourceBase(".");
  
         // Add the ResourceHandler to the server.
